@@ -48,17 +48,42 @@ function checkAnswers() {
     // 🏆 CUMULATIVE FINAL EXAM GRADING SCREENS
     // ==========================================
     if (quizId === "finalQuiz") {
-        // Retrieve past scores and convert them to numbers
         let q1 = parseInt((localStorage.getItem('quiz1') || "0").split(" ")[0]);
         let q2 = parseInt((localStorage.getItem('quiz2') || "0").split(" ")[0]);
         let q3 = parseInt((localStorage.getItem('quiz3') || "0").split(" ")[0]);
         let q4 = parseInt((localStorage.getItem('quiz4') || "0").split(" ")[0]);
 
-        // Calculate cumulative math (5 + 5 + 5 + 5 + 15 = 35 total possible)
         let cumulativeScore = score + q1 + q2 + q3 + q4;
         let cumulativePercentage = Math.round((cumulativeScore / 35) * 100);
 
-        // Hide the quiz form and old text to make room for the new full-page screen
+        // --- NEW: Star Rating & Adjective Logic ---
+        let stars = "";
+        let adjective = "";
+        
+        if (cumulativePercentage >= 90) {
+            stars = "⭐⭐⭐⭐⭐";
+            adjective = "Brilliant Master!";
+        } else if (cumulativePercentage >= 80) {
+            stars = "⭐⭐⭐⭐";
+            adjective = "Awesome Scholar!";
+        } else if (cumulativePercentage >= 75) {
+            stars = "⭐⭐⭐";
+            adjective = "Good Learner!";
+        } else if (cumulativePercentage >= 60) {
+            stars = "⭐⭐";
+            adjective = "Developing Student!";
+        } else if (cumulativePercentage >= 50) {
+            stars = "⭐";
+            adjective = "Brave Beginner!";
+        } else {
+            stars = "🌱"; // A growing seed for under 50%
+            adjective = "Still Growing!";
+        }
+        
+        // The HTML for the new star badge
+        let starBadgeHTML = `<h4 class="mb-3">${stars} <span class="badge bg-light text-dark shadow-sm ms-2">${adjective}</span></h4>`;
+
+        // Hide the quiz form and old text
         document.querySelectorAll('.card.lesson-card').forEach(c => c.style.display = 'none');
         document.querySelector('button[onclick="checkAnswers()"]').style.display = 'none';
         document.getElementById('pastScoresBoard').style.display = 'none';
@@ -66,12 +91,13 @@ function checkAnswers() {
         
         resultBox.classList.remove("mt-4");
         
-        // Inject the Beautiful Custom Screens based on percentage thresholds
+        // Inject the Screens (Now featuring the starBadgeHTML)
         if (cumulativePercentage === 100) {
             resultBox.innerHTML = `
                 <div class="card p-5 text-center shadow-lg" style="background: linear-gradient(135deg, #FFD700, #ff8c00); color: white; border: none; border-radius: 20px;">
                     <h1 class="display-1">🏆</h1>
-                    <h1 class="fw-bold mb-3">Excellent! Flawless Victory!</h1>
+                    <h1 class="fw-bold mb-2">Excellent! Flawless Victory!</h1>
+                    ${starBadgeHTML}
                     <h3 class="bg-white text-dark py-2 px-4 rounded-pill d-inline-block mx-auto mb-4">Total Score: 100% (${cumulativeScore}/35)</h3>
                     <p class="fs-4">You have mastered the entire English Basics course without a single mistake. This is an incredible achievement!</p>
                     <a href="index.html" class="btn btn-light btn-lg mt-4 text-warning fw-bold fs-4">Return Home as a Champion 🌟</a>
@@ -80,7 +106,8 @@ function checkAnswers() {
             resultBox.innerHTML = `
                 <div class="card p-5 text-center shadow-lg" style="background: linear-gradient(135deg, #28a745, #20c997); color: white; border: none; border-radius: 20px;">
                     <h1 class="display-1">🎉</h1>
-                    <h1 class="fw-bold mb-3">Great Work!</h1>
+                    <h1 class="fw-bold mb-2">Great Work!</h1>
+                    ${starBadgeHTML}
                     <h3 class="bg-white text-dark py-2 px-4 rounded-pill d-inline-block mx-auto mb-4">Total Score: ${cumulativePercentage}% (${cumulativeScore}/35)</h3>
                     <p class="fs-4">You have successfully completed and learned from the course. We are so proud of your hard work!</p>
                     <a href="index.html" class="btn btn-light btn-lg mt-4 text-success fw-bold fs-4">Return Home 🏡</a>
@@ -89,7 +116,8 @@ function checkAnswers() {
             resultBox.innerHTML = `
                 <div class="card p-5 text-center shadow-lg" style="background: linear-gradient(135deg, #17a2b8, #0dcaf0); color: white; border: none; border-radius: 20px;">
                     <h1 class="display-1">👍</h1>
-                    <h1 class="fw-bold mb-3">Good Job!</h1>
+                    <h1 class="fw-bold mb-2">Good Job!</h1>
+                    ${starBadgeHTML}
                     <h3 class="bg-white text-dark py-2 px-4 rounded-pill d-inline-block mx-auto mb-4">Total Score: ${cumulativePercentage}% (${cumulativeScore}/35)</h3>
                     <p class="fs-4">You did well! You have completed the course, but there is always a little room to improve.</p>
                     <a href="index.html" class="btn btn-light btn-lg mt-4 text-info fw-bold fs-4">Return Home 🏡</a>
@@ -98,7 +126,8 @@ function checkAnswers() {
             resultBox.innerHTML = `
                 <div class="card p-5 text-center shadow-lg" style="background: linear-gradient(135deg, #fd7e14, #ffc107); color: white; border: none; border-radius: 20px;">
                     <h1 class="display-1">📚</h1>
-                    <h1 class="fw-bold mb-3">You Passed!</h1>
+                    <h1 class="fw-bold mb-2">You Passed!</h1>
+                    ${starBadgeHTML}
                     <h3 class="bg-white text-dark py-2 px-4 rounded-pill d-inline-block mx-auto mb-4">Total Score: ${cumulativePercentage}% (${cumulativeScore}/35)</h3>
                     <p class="fs-4">You completed the course, but it is highly recommended to go through the modules you had difficulty in again to strengthen your English.</p>
                     <a href="index.html" class="btn btn-light btn-lg mt-4 text-warning fw-bold fs-4">Return Home 🏡</a>
@@ -107,7 +136,8 @@ function checkAnswers() {
             resultBox.innerHTML = `
                 <div class="card p-5 text-center shadow-lg" style="background: linear-gradient(135deg, #dc3545, #c82333); color: white; border: none; border-radius: 20px;">
                     <h1 class="display-1">💔</h1>
-                    <h1 class="fw-bold mb-3">Course Failed</h1>
+                    <h1 class="fw-bold mb-2">Course Failed</h1>
+                    ${starBadgeHTML}
                     <h3 class="bg-white text-dark py-2 px-4 rounded-pill d-inline-block mx-auto mb-4">Total Score: ${cumulativePercentage}% (${cumulativeScore}/35)</h3>
                     <p class="fs-4">Don't give up! Please go back and retake the modules and quizzes to improve your understanding.</p>
                     <a href="index.html" class="btn btn-light btn-lg mt-4 text-danger fw-bold fs-4">Retry Course 🔄</a>
@@ -137,7 +167,6 @@ function checkAnswers() {
     }
 }
 
-// --- The Gatekeeper function for the Final Exam ---
 // --- The Gatekeeper function for the Final Exam ---
 function checkFinalExamAccess() {
     let q1 = localStorage.getItem('quiz1');
