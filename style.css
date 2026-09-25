@@ -1,0 +1,15 @@
+
+body {
+    background-color: #f0f8ff; 
+    font-family: 'Comic Sans MS', 'Chalkboard SE', sans-serif; 
+}
+
+.lesson-card {
+    border-radius: 20px; 
+    border: none; 
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+    transition: transform 0.2s; 
+}
+.lesson-card:hover {
+    transform: translateY(-5px);
+}

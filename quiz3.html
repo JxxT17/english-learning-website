@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quiz 3 - English Basics</title>
+
+    <!-- Bootstrap 5 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- Navigation Bar -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-white shadow-sm">
+      <div class="container">
+        <a class="navbar-brand text-primary fw-bold" href="index.html">English Basics</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav ms-auto">
+            <li class="nav-item">
+              <a class="nav-link" href="index.html">Home</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="lessons.html">Lessons</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link active" href="quiz1.html">Quiz</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+    <!-- Main Content -->
+    <div class="container mt-5 mb-5">
+        <h2 class="text-center text-primary mb-4">Quiz 3: Advanced Words & Nouns</h2>
+        <p class="text-center mb-4 fs-5">Let's test your new grammar skills!</p>
+        
+        <div class="row justify-content-center">
+            <div class="col-md-8">
+                <form id="quizForm">
+                    
+                    <!-- Question 1: Proper Noun -->
+                    <div class="card lesson-card p-4 mb-4" id="card1">
+                        <h5>1. Which word is a <strong>Proper Noun</strong> (खास नाम)?</h5>
+                        <div class="form-check mt-2">
+                            <input class="form-check-input" type="radio" name="q1" value="wrong" id="q1a">
+                            <label class="form-check-label" for="q1a">city (शहर)</label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="q1" value="correct" id="q1b">
+                            <label class="form-check-label" for="q1b">Raju (राजू)</label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="q1" value="wrong" id="q1c">
+                            <label class="form-check-label" for="q1c">school (स्कूल)</label>
+                        </div>
+                        <div id="feedback1"></div>
+                    </div>
+
+                    <!-- Question 2: Capitalization -->
+                    <div class="card lesson-card p-4 mb-4" id="card2">
+                        <h5>2. How should we write the name of a country? (Proper Noun Rule)</h5>
+                        <div class="form-check mt-2">
+                            <input class="form-check-input" type="radio" name="q2" value="wrong" id="q2a">
+                            <label class="form-check-label" for="q2a">india</label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="q2" value="wrong" id="q2b">
+                            <label class="form-check-label" for="q2b">iNDIA</label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="q2" value="correct" id="q2c">
+                            <label class="form-check-label" for="q2c">India</label>
+                        </div>
+                        <div id="feedback2"></div>
+                    </div>
+
+                    <!-- Question 3: Preposition -->
+                    <div class="card lesson-card p-4 mb-4" id="card3">
+                        <h5>3. Choose the right <strong>Preposition</strong>: The book is ___ the table. (किताब टेबल के ___ है।)</h5>
+                        <div class="form-check mt-2">
+                            <input class="form-check-input" type="radio" name="q3" value="correct" id="q3a">
+                            <label class="form-check-label" for="q3a">on (ऊपर)</label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="q3" value="wrong" id="q3b">
+                            <label class="form-check-label" for="q3b">and (और)</label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="q3" value="wrong" id="q3c">
+                            <label class="form-check-label" for="q3c">wow (वाह)</label>
+                        </div>
+                        <div id="feedback3"></div>
+                    </div>
+
+                    <!-- Question 4: Conjunction -->
+                    <div class="card lesson-card p-4 mb-4" id="card4">
+                        <h5>4. Choose the right <strong>Conjunction</strong>: I want milk ___ cookies. (मुझे दूध ___ कुकीज़ चाहिए।)</h5>
+                        <div class="form-check mt-2">
+                            <input class="form-check-input" type="radio" name="q4" value="wrong" id="q4a">
+                            <label class="form-check-label" for="q4a">in (अंदर)</label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="q4" value="correct" id="q4b">
+                            <label class="form-check-label" for="q4b">and (और)</label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="q4" value="wrong" id="q4c">
+                            <label class="form-check-label" for="q4c">the (वह)</label>
+                        </div>
+                        <div id="feedback4"></div>
+                    </div>
+
+                    <!-- Question 5: Interjection -->
+                    <div class="card lesson-card p-4 mb-4" id="card5">
+                        <h5>5. Choose the right <strong>Interjection</strong>: ___! We won the game! (___! हम खेल जीत गए!)</h5>
+                        <div class="form-check mt-2">
+                            <input class="form-check-input" type="radio" name="q5" value="correct" id="q5a">
+                            <label class="form-check-label" for="q5a">Yay</label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="q5" value="wrong" id="q5b">
+                            <label class="form-check-label" for="q5b">Under</label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="q5" value="wrong" id="q5c">
+                            <label class="form-check-label" for="q5c">Or</label>
+                        </div>
+                        <div id="feedback5"></div>
+                    </div>
+
+                    <div class="text-center">
+                        <button type="button" class="btn btn-success btn-lg" onclick="checkAnswers()">Submit Answers ✅</button>
+                    </div>
+
+                    <!-- This is where the JavaScript will print the score -->
+                    <div id="resultBox" class="mt-4 text-center fs-4 fw-bold"></div>
+
+                    <!-- Finish Course Button (Hidden by default using 'd-none') -->
+                    <div id="nextModuleBtn" class="text-center mt-4 d-none">
+                        <a href="level3.html" class="btn btn-warning btn-lg fw-bold">Lets dive deeper into sentence making and tenses.</a>
+                    </div>
+
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- Bootstrap 5 JavaScript Bundle -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmxc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+    
+    <!-- Custom JavaScript -->
+    <script src="script.js"></script>
+</body>
+</html>
